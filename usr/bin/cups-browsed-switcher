@@ -1,0 +1,25 @@
+#!/bin/sh
+
+. gettext.sh
+export TEXTDOMAIN=cups-browsed-switcher
+
+if systemctl -q is-active cups-browsed
+then
+	if zenity --question --no-wrap --text \
+		"$(gettext "Automatic network printer installation is ENABLED.\nDo you want to disable it?")"
+	then
+		sudo systemctl stop cups-browsed
+		sudo systemctl disable cups-browsed
+		zenity --info --no-wrap --text \
+			"$(gettext "Automatic network printer installation\nsuccessfully disabled.")"
+	fi
+else
+	if zenity --question --no-wrap --text \
+		"$(gettext "Automatic network printer installation is DISABLED.\nDo you want to enable it?")"
+	then
+		sudo systemctl enable cups-browsed
+		sudo systemctl start cups-browsed
+		zenity --info --no-wrap --text \
+			"$(gettext "Automatic network printer installation\nsuccessfully enabled.")"
+	fi
+fi

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Toggle automatic network printer installation
+Name[de]=Automatische Netzwerkdruckerinstallation umschalten
+Icon=cups-browsed-switcher
+Exec=cups-browsed-switcher
+Type=Application
+Categories=Settings;

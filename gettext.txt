@@ -1,0 +1,38 @@
+Initialisierung
+---------------
+mkdir -p po/de
+xgettext -L Shell --add-comments=## usr/bin/cups-browsed-switcher
+vi messages.po #header richtig füllen
+cp messages.po po/de/cups-browsed-switcher.po
+vi po/de/cups-browsed-switcher.po # erste Übersetzung
+cd po; for i in *; do cd $i; msgfmt -o cups-browsed-switcher.mo cups-browsed-switcher.po; cd ..; done; cd ..
+cd po; for i in *; do cd $i; MDIR="../../usr/share/locale/$i/LC_MESSAGES/"; mkdir -p ${MDIR}; rm -f ${MDIR}/cups-browsed-switcher.mo; cp cups-browsed-switcher.mo ${MDIR}; cd ..; done; cd ..
+
+xgettext -L Shell --add-comments=## usr/bin/lernstick_backup
+vi messages.po #header richtig füllen
+cp messages.po po/de/lernstick_backup.po
+vi po/de/lernstick_backup.po # erste Übersetzung
+cd po; for i in *; do cd $i; msgfmt -o lernstick_backup.mo lernstick_backup.po; cd ..; done; cd ..
+cd po; for i in *; do cd $i; MDIR="../../usr/share/locale/$i/LC_MESSAGES/"; mkdir -p ${MDIR}; rm -f ${MDIR}/lernstick_backup.mo; cp lernstick_backup.mo ${MDIR}; cd ..; done; cd ..
+
+xgettext -L Shell --add-comments=## usr/bin/detect_virtualization
+vi messages.po #header richtig füllen
+cp messages.po po/de/detect_virtualization.po
+vi po/de/detect_virtualization.po # erste Übersetzung
+cd po; for i in *; do cd $i; msgfmt -o detect_virtualization.mo detect_virtualization.po; cd ..; done; cd ..
+cd po; for i in *; do cd $i; MDIR="../../usr/share/locale/$i/LC_MESSAGES/"; mkdir -p ${MDIR}; rm -f ${MDIR}/detect_virtualization.mo; cp detect_virtualization.mo ${MDIR}; cd ..; done; cd ..
+
+Update:
+-------
+xgettext -L Shell --add-comments=## usr/bin/cups-browsed-switcher
+cd po; for i in *; do cd $i; msgmerge -U cups-browsed-switcher.po ../../messages.po; cd ..; done; cd ..
+vi po/*/cups-browsed-switcher.po
+cd po; for i in *; do cd $i; msgfmt -o cups-browsed-switcher.mo cups-browsed-switcher.po; cd ..; done; cd ..
+cd po; for i in *; do cd $i; MDIR="../../usr/share/locale/$i/LC_MESSAGES/"; mkdir -p ${MDIR}; rm -f ${MDIR}/cups-browsed-switcher.mo; cp cups-browsed-switcher.mo ${MDIR}; cd ..; done; cd ..
+
+xgettext -L Shell --add-comments=## usr/bin/lernstick_backup
+cd po; for i in *; do cd $i; msgmerge -U lernstick_backup.po ../../messages.po; cd ..; done; cd ..
+vi po/*/lernstick_backup.po
+cd po; for i in *; do cd $i; msgfmt -o lernstick_backup.mo lernstick_backup.po; cd ..; done; cd ..
+cd po; for i in *; do cd $i; MDIR="../../usr/share/locale/$i/LC_MESSAGES/"; mkdir -p ${MDIR}; rm -f ${MDIR}/lernstick_backup.mo; cp lernstick_backup.mo ${MDIR}; cd ..; done; cd ..
+

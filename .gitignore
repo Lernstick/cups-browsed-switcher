@@ -1,0 +1,5 @@
+debian/.debhelper/
+debian/cups-browsed-switcher.substvars
+debian/cups-browsed-switcher/
+debian/debhelper-build-stamp
+debian/files

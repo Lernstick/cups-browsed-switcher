@@ -1,0 +1,21 @@
+Source: cups-browsed-switcher
+Section: net
+Priority: extra
+Maintainer: Ronny Standtke <ronny.standtke@gmx.net>
+Build-Depends: debhelper (>= 10)
+Standards-Version: 3.7.3
+
+Package: cups-browsed-switcher
+Architecture: all
+# Dependencies explained:
+# - gettext-base: for i18n and L10n 
+# - systemd: to start, stop, enable and disable the cups-browsed service
+# - zenity: to display user visible dialogs
+Depends: ${misc:Depends},
+	gettext-base,
+	systemd,
+	zenity
+Description: A simple program to enable or disable cups-browsed
+ Automatic installation of network printers is not always preferred.
+ With this tool, users may enable or disable this feature provided by
+ cups-browsed.
